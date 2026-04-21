@@ -1,0 +1,39 @@
+{
+    "order-processor-9f2e8d5b7c-q7r4t": [
+        "2026-04-16T14:17:45.123Z ERROR [main] OutOfMemoryError: Java heap space",
+        "2026-04-16T14:17:45.124Z ERROR [main]   at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1244)",
+        "2026-04-16T14:17:45.124Z ERROR [main]   at com.corp.orders.consumer.OrderConsumer.consumeBatch(OrderConsumer.java:87)",
+        "2026-04-16T14:17:45.125Z ERROR [main]   at com.corp.orders.consumer.OrderConsumer.run(OrderConsumer.java:42)",
+        "2026-04-16T14:17:44.891Z WARN  [kafka-consumer] Batch processing took 12847ms for 500 records (threshold: 5000ms)",
+        "2026-04-16T14:17:40.003Z INFO  [kafka-consumer] Polling batch of 500 records from topic: orders.incoming",
+        "2026-04-16T14:17:28.112Z WARN  [kafka-consumer] Batch processing took 11923ms for 500 records (threshold: 5000ms)",
+        "2026-04-16T14:17:16.034Z INFO  [kafka-consumer] Polling batch of 500 records from topic: orders.incoming",
+        "2026-04-16T14:16:55.771Z WARN  [gc] GC pause 2847ms — heap usage 3.8Gi / 4.0Gi (95%)",
+        "2026-04-16T14:16:42.445Z WARN  [gc] GC pause 1923ms — heap usage 3.6Gi / 4.0Gi (90%)",
+        "2026-04-16T14:16:30.201Z INFO  [kafka-consumer] Consumer group rebalanced: assigned partitions [0, 1, 2, 3]",
+        "2026-04-16T14:16:28.003Z INFO  [main] Starting order-processor v3.1.0-rc2",
+        "2026-04-16T14:16:28.001Z INFO  [main] Kafka batch size: 500, consumer group: order-processor-prod"
+    ],
+    "payments-api-7d8f9c5b4d-x2p9k": [
+        "2026-04-16T14:18:01.234Z INFO  [http] POST /api/v1/payments 201 45ms",
+        "2026-04-16T14:17:58.112Z INFO  [http] POST /api/v1/payments 201 38ms",
+        "2026-04-16T14:17:55.891Z INFO  [http] GET /healthz 200 2ms",
+        "2026-04-16T14:17:52.003Z INFO  [http] POST /api/v1/payments 201 52ms",
+        "2026-04-16T14:17:49.445Z INFO  [http] POST /api/v1/payments/refund 201 67ms"
+    ],
+    "notification-worker-3c7a5e9b2d-h6j2l": [
+        "2026-04-16T14:18:02.567Z WARN  [smtp] Delivery delayed for order-confirm-78234: upstream timeout (retry 2/3)",
+        "2026-04-16T14:17:59.234Z INFO  [worker] Processing notification batch: 12 messages",
+        "2026-04-16T14:17:55.891Z INFO  [worker] Email sent: order-confirm-78233 to customer@example.com",
+        "2026-04-16T14:17:50.003Z INFO  [worker] Processing notification batch: 8 messages"
+    ],
+    "fraud-detector-5d8e3f7b9c-w4x8y": [
+        "2026-04-16T14:18:03.123Z INFO  [inference] Transaction txn-9981234 scored 0.12 (low risk) in 18ms",
+        "2026-04-16T14:18:01.891Z INFO  [inference] Transaction txn-9981233 scored 0.87 (HIGH risk) in 22ms — flagged for review",
+        "2026-04-16T14:17:59.445Z INFO  [inference] Transaction txn-9981232 scored 0.03 (low risk) in 15ms",
+        "2026-04-16T14:17:56.234Z INFO  [model] Model warmup complete: fraud-v2.2.0 loaded in 12.3s"
+    ],
+    "analytics-ingester-8b2f4d7e6c-m9n3p": [
+        "No logs available — pod has not started (Pending: Unschedulable)"
+    ]
+}

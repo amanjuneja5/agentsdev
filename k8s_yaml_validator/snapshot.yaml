@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-processor
+  # BAD: Missing labels like app, version, team, environment
+  labels:
+    app: order-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-processor
+  template:
+    metadata:
+      labels:
+        app: order-processor
+        # BAD: No version, team, or environment labels on pod template
+    spec:
+      # BAD: No serviceAccountName — will use 'default' SA
+      # BAD: No pod-level securityContext
+      hostNetwork: true  # BAD: Using host network
+      containers:
+        - name: order-processor
+          image: registry.internal.corp/order-processor:latest  # BAD: Using :latest tag
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: DATABASE_URL
+              value: "postgres://admin:p@ssw0rd123@db.prod:5432/orders"  # BAD: Hardcoded credentials in plain text
+            - name: KAFKA_BROKERS
+              value: "kafka-0.kafka.data:9092,kafka-1.kafka.data:9092"
+            - name: LOG_LEVEL
+              value: "debug"  # BAD: Debug logging in production
+            - name: NODE_ENV
+              value: "production"
+          # BAD: No resource requests or limits at all
+          # BAD: No liveness probe
+          # BAD: No readiness probe
+          securityContext:
+            privileged: true            # BAD: Privileged container
+            runAsRoot: true             # BAD: Wrong field name (should be runAsUser: 0 / runAsNonRoot: false)
+            readOnlyRootFilesystem: false # BAD: Writable root filesystem
+            allowPrivilegeEscalation: true  # BAD: Allows privilege escalation
+            capabilities:
+              add:
+                - NET_ADMIN              # BAD: Unnecessary capability
+                - SYS_ADMIN              # BAD: Dangerous capability
+        - name: debug-sidecar
+          image: ubuntu:latest           # BAD: Generic base image with :latest in prod
+          command: [
+    "sleep",
+    "infinity"
+] # BAD: Debug sidecar left in prod manifest
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: host-fs
+              mountPath: /host
+      volumes:
+        - name: host-fs
+          hostPath:                      # BAD: Mounting host filesystem
+            path: /
+            type: Directory
+      terminationGracePeriodSeconds: 0   # BAD: No graceful shutdown
+      # BAD: No pod disruption budget reference
+      # BAD: No topology spread constraints or anti-affinity
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-processor
+  # BAD: No labels on the service
+spec:
+  type: NodePort          # BAD: NodePort exposed directly — should use ClusterIP + Ingress
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30080     # BAD: Hardcoded nodePort
+  selector:
+    app: order-processor

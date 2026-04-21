@@ -1,0 +1,83 @@
+{
+    "namespace": "prod",
+    "pods": [
+        {
+            "name": "payments-api-7d8f9c5b4d-x2p9k",
+            "status": "Running",
+            "ready": "1/1",
+            "restarts": 0,
+            "age": "6d",
+            "image": "registry.internal.corp/payments-api:v2.4.1",
+            "node": "ip-10-0-12-45.ec2.internal"
+        },
+        {
+            "name": "inventory-service-6b4d8e7c9f-k3m8n",
+            "status": "Running",
+            "ready": "1/1",
+            "restarts": 0,
+            "age": "6d",
+            "image": "registry.internal.corp/inventory-service:v1.8.3",
+            "node": "ip-10-0-12-67.ec2.internal"
+        },
+        {
+            "name": "order-processor-9f2e8d5b7c-q7r4t",
+            "status": "CrashLoopBackOff",
+            "ready": "0/1",
+            "restarts": 23,
+            "age": "28m",
+            "image": "registry.internal.corp/order-processor:v3.1.0-rc2",
+            "node": "ip-10-0-12-89.ec2.internal",
+            "last_termination": {
+                "exit_code": 137,
+                "reason": "OOMKilled",
+                "finished_at": "2026-04-16T14:18:21Z"
+            }
+        },
+        {
+            "name": "notification-worker-3c7a5e9b2d-h6j2l",
+            "status": "Running",
+            "ready": "1/1",
+            "restarts": 2,
+            "age": "1d",
+            "image": "registry.internal.corp/notification-worker:v1.3.7",
+            "node": "ip-10-0-12-45.ec2.internal"
+        },
+        {
+            "name": "analytics-ingester-8b2f4d7e6c-m9n3p",
+            "status": "Pending",
+            "ready": "0/1",
+            "restarts": 0,
+            "age": "12m",
+            "image": "registry.internal.corp/analytics-ingester:v2.0.1",
+            "node": null,
+            "pending_reason": "Unschedulable: 0/12 nodes available: 3 Insufficient cpu, 5 Insufficient memory, 4 node(s) had untolerated taint"
+        },
+        {
+            "name": "fraud-detector-5d8e3f7b9c-w4x8y",
+            "status": "Running",
+            "ready": "1/1",
+            "restarts": 1,
+            "age": "38m",
+            "image": "registry.internal.corp/fraud-detector:v2.2.0",
+            "node": "ip-10-0-12-112.ec2.internal"
+        },
+        {
+            "name": "redis-cache-0",
+            "status": "Running",
+            "ready": "1/1",
+            "restarts": 0,
+            "age": "23d",
+            "image": "redis:7.2.4-alpine",
+            "node": "ip-10-0-12-89.ec2.internal"
+        },
+        {
+            "name": "data-migration-job-xj7k2",
+            "status": "Succeeded",
+            "ready": "0/1",
+            "restarts": 0,
+            "age": "4h",
+            "image": "registry.internal.corp/data-migration:v1.0.5",
+            "node": "ip-10-0-12-67.ec2.internal"
+        }
+    ]
+}

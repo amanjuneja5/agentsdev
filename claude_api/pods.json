@@ -1,0 +1,750 @@
+{
+    "kind": "List",
+    "apiVersion": "v1",
+    "metadata": {
+        "resourceVersion": ""
+    },
+    "items": [
+        {
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "payments-api-7d8f9c5b4d-x2p9k",
+                "generateName": "payments-api-7d8f9c5b4d-",
+                "namespace": "prod",
+                "uid": "a4f8e912-3b7c-4d2a-9e1f-8c5d3b7a2e91",
+                "resourceVersion": "284759123",
+                "creationTimestamp": "2026-04-14T09:23:17Z",
+                "labels": {
+                    "app": "payments-api",
+                    "version": "v2.4.1",
+                    "tier": "backend",
+                    "pod-template-hash": "7d8f9c5b4d",
+                    "environment": "prod",
+                    "team": "payments-platform"
+                },
+                "annotations": {
+                    "kubernetes.io/psp": "restricted-psp",
+                    "prometheus.io/scrape": "true",
+                    "prometheus.io/port": "9090",
+                    "prometheus.io/path": "/metrics",
+                    "sidecar.istio.io/status": "{\"version\":\"1.20.3\",\"initContainers\":[\"istio-init\"],\"containers\":[\"istio-proxy\"],\"volumes\":[\"workload-socket\",\"credential-socket\",\"workload-certs\",\"istio-envoy\",\"istio-data\",\"istio-podinfo\",\"istio-token\",\"istiod-ca-cert\"]}",
+                    "checksum/config": "8f7a9e2d4b6c1f3e5a8d2c9b4e7f1a6d"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "payments-api-7d8f9c5b4d",
+                        "uid": "7e2a9d4b-1c8f-4e5d-8a2b-9c4d7e1f3a6b",
+                        "controller": true,
+                        "blockOwnerDeletion": true
+                    }
+                ]
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "payments-api",
+                        "image": "registry.internal.corp/payments-api:v2.4.1",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP",
+                                "name": "http"
+                            },
+                            {
+                                "containerPort": 9090,
+                                "protocol": "TCP",
+                                "name": "metrics"
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "DATABASE_URL",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "name": "payments-db",
+                                        "key": "url"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "REDIS_HOST",
+                                "value": "redis-master.cache.svc.cluster.local"
+                            },
+                            {
+                                "name": "LOG_LEVEL",
+                                "value": "info"
+                            },
+                            {
+                                "name": "ENVIRONMENT",
+                                "value": "production"
+                            },
+                            {
+                                "name": "JAEGER_ENDPOINT",
+                                "value": "http://jaeger-collector.observability:14268/api/traces"
+                            }
+                        ],
+                        "resources": {
+                            "requests": {
+                                "cpu": "500m",
+                                "memory": "1Gi"
+                            },
+                            "limits": {
+                                "cpu": "2000m",
+                                "memory": "4Gi"
+                            }
+                        },
+                        "livenessProbe": {
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080
+                            },
+                            "initialDelaySeconds": 30,
+                            "periodSeconds": 10,
+                            "timeoutSeconds": 5,
+                            "failureThreshold": 3
+                        },
+                        "readinessProbe": {
+                            "httpGet": {
+                                "path": "/ready",
+                                "port": 8080
+                            },
+                            "initialDelaySeconds": 5,
+                            "periodSeconds": 5,
+                            "timeoutSeconds": 3,
+                            "failureThreshold": 3
+                        }
+                    }
+                ],
+                "restartPolicy": "Always",
+                "terminationGracePeriodSeconds": 30,
+                "dnsPolicy": "ClusterFirst",
+                "serviceAccountName": "payments-api-sa",
+                "nodeName": "ip-10-0-12-45.ec2.internal",
+                "securityContext": {
+                    "runAsUser": 1000,
+                    "runAsNonRoot": true,
+                    "fsGroup": 1000
+                }
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Initialized",
+                        "status": "True",
+                        "lastTransitionTime": "2026-04-14T09:23:19Z"
+                    },
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastTransitionTime": "2026-04-14T09:23:47Z"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "True",
+                        "lastTransitionTime": "2026-04-14T09:23:47Z"
+                    },
+                    {
+                        "type": "PodScheduled",
+                        "status": "True",
+                        "lastTransitionTime": "2026-04-14T09:23:17Z"
+                    }
+                ],
+                "hostIP": "10.0.12.45",
+                "podIP": "10.244.3.127",
+                "podIPs": [
+                    {
+                        "ip": "10.244.3.127"
+                    }
+                ],
+                "startTime": "2026-04-14T09:23:17Z",
+                "containerStatuses": [
+                    {
+                        "name": "payments-api",
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-04-14T09:23:40Z"
+                            }
+                        },
+                        "lastState": {},
+                        "ready": true,
+                        "restartCount": 0,
+                        "image": "registry.internal.corp/payments-api:v2.4.1",
+                        "imageID": "docker-pullable://registry.internal.corp/payments-api@sha256:3f8a9e2d4b6c1f3e5a8d2c9b4e7f1a6d8c5e2b9a1f4d7c3e8b5a2d6f9c1e4b7a",
+                        "containerID": "containerd://8f7a9e2d4b6c1f3e5a8d2c9b4e7f1a6d8c5e2b9a1f4d7c3e8b5a2d6f9c1e4b7a",
+                        "started": true
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "inventory-service-6b4d8e7c9f-k3m8n",
+                "generateName": "inventory-service-6b4d8e7c9f-",
+                "namespace": "prod",
+                "uid": "b5e9f023-4c8d-5e3b-0f2a-9d6e4c8b3f02",
+                "resourceVersion": "284759456",
+                "creationTimestamp": "2026-04-14T09:23:18Z",
+                "labels": {
+                    "app": "inventory-service",
+                    "version": "v1.8.3",
+                    "tier": "backend",
+                    "pod-template-hash": "6b4d8e7c9f",
+                    "environment": "prod",
+                    "team": "inventory-platform"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "inventory-service",
+                        "image": "registry.internal.corp/inventory-service:v1.8.3",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "requests": {
+                                "cpu": "250m",
+                                "memory": "512Mi"
+                            },
+                            "limits": {
+                                "cpu": "1000m",
+                                "memory": "2Gi"
+                            }
+                        }
+                    }
+                ],
+                "nodeName": "ip-10-0-12-67.ec2.internal"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastTransitionTime": "2026-04-14T09:23:45Z"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "True",
+                        "lastTransitionTime": "2026-04-14T09:23:45Z"
+                    }
+                ],
+                "hostIP": "10.0.12.67",
+                "podIP": "10.244.4.89",
+                "startTime": "2026-04-14T09:23:18Z",
+                "containerStatuses": [
+                    {
+                        "name": "inventory-service",
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-04-14T09:23:38Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 0,
+                        "started": true
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "order-processor-9f2e8d5b7c-q7r4t",
+                "generateName": "order-processor-9f2e8d5b7c-",
+                "namespace": "prod",
+                "uid": "c6f0a134-5d9e-6f4c-1a3b-0e7f5d9c4a13",
+                "resourceVersion": "284759789",
+                "creationTimestamp": "2026-04-16T14:12:03Z",
+                "labels": {
+                    "app": "order-processor",
+                    "version": "v3.1.0-rc2",
+                    "tier": "backend",
+                    "pod-template-hash": "9f2e8d5b7c",
+                    "environment": "prod"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "order-processor",
+                        "image": "registry.internal.corp/order-processor:v3.1.0-rc2",
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "KAFKA_BROKERS",
+                                "value": "kafka-0.kafka.data:9092,kafka-1.kafka.data:9092,kafka-2.kafka.data:9092"
+                            },
+                            {
+                                "name": "CONSUMER_GROUP",
+                                "value": "order-processor-prod"
+                            }
+                        ],
+                        "resources": {
+                            "requests": {
+                                "cpu": "500m",
+                                "memory": "1Gi"
+                            },
+                            "limits": {
+                                "cpu": "2000m",
+                                "memory": "4Gi"
+                            }
+                        }
+                    }
+                ],
+                "nodeName": "ip-10-0-12-89.ec2.internal"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Ready",
+                        "status": "False",
+                        "lastTransitionTime": "2026-04-16T14:18:23Z",
+                        "reason": "ContainersNotReady",
+                        "message": "containers with unready status: [order-processor]"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "False",
+                        "lastTransitionTime": "2026-04-16T14:18:23Z",
+                        "reason": "ContainersNotReady"
+                    }
+                ],
+                "hostIP": "10.0.12.89",
+                "podIP": "10.244.5.42",
+                "startTime": "2026-04-16T14:12:03Z",
+                "containerStatuses": [
+                    {
+                        "name": "order-processor",
+                        "state": {
+                            "waiting": {
+                                "reason": "CrashLoopBackOff",
+                                "message": "back-off 5m0s restarting failed container=order-processor pod=order-processor-9f2e8d5b7c-q7r4t_prod(c6f0a134-5d9e-6f4c-1a3b-0e7f5d9c4a13)"
+                            }
+                        },
+                        "lastState": {
+                            "terminated": {
+                                "exitCode": 137,
+                                "reason": "OOMKilled",
+                                "startedAt": "2026-04-16T14:17:45Z",
+                                "finishedAt": "2026-04-16T14:18:21Z",
+                                "containerID": "containerd://9f2e8d5b7c4a1f3e8d2c9b4e7f1a6d8c5e2b9a1f4d7c3e8b5a2d6f9c1e4b7a3"
+                            }
+                        },
+                        "ready": false,
+                        "restartCount": 23,
+                        "started": false
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "notification-worker-3c7a5e9b2d-h6j2l",
+                "namespace": "prod",
+                "uid": "d7a1b245-6e0f-7a5d-2b4c-1f8a6e0d5b24",
+                "resourceVersion": "284760012",
+                "creationTimestamp": "2026-04-15T18:45:22Z",
+                "labels": {
+                    "app": "notification-worker",
+                    "version": "v1.3.7",
+                    "tier": "backend",
+                    "environment": "prod"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "worker",
+                        "image": "registry.internal.corp/notification-worker:v1.3.7",
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "256Mi"
+                            },
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "1Gi"
+                            }
+                        }
+                    }
+                ],
+                "nodeName": "ip-10-0-12-45.ec2.internal"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastTransitionTime": "2026-04-15T18:45:58Z"
+                    }
+                ],
+                "hostIP": "10.0.12.45",
+                "podIP": "10.244.3.201",
+                "startTime": "2026-04-15T18:45:22Z",
+                "containerStatuses": [
+                    {
+                        "name": "worker",
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-04-15T18:45:55Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 2,
+                        "started": true
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "analytics-ingester-8b2f4d7e6c-m9n3p",
+                "namespace": "prod",
+                "uid": "e8b2c356-7f1a-8b6e-3c5d-2a9b7f1e6c35",
+                "resourceVersion": "284760234",
+                "creationTimestamp": "2026-04-16T14:30:15Z",
+                "labels": {
+                    "app": "analytics-ingester",
+                    "version": "v2.0.1",
+                    "tier": "data",
+                    "environment": "prod"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "ingester",
+                        "image": "registry.internal.corp/analytics-ingester:v2.0.1",
+                        "resources": {
+                            "requests": {
+                                "cpu": "1000m",
+                                "memory": "2Gi"
+                            },
+                            "limits": {
+                                "cpu": "4000m",
+                                "memory": "8Gi"
+                            }
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "phase": "Pending",
+                "conditions": [
+                    {
+                        "type": "PodScheduled",
+                        "status": "False",
+                        "lastTransitionTime": "2026-04-16T14:30:15Z",
+                        "reason": "Unschedulable",
+                        "message": "0/12 nodes are available: 3 Insufficient cpu, 5 Insufficient memory, 4 node(s) had untolerated taint {node-role.kubernetes.io/master: }. preemption: 0/12 nodes are available: 3 No preemption victims found for incoming pod, 9 Preemption is not helpful for scheduling."
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "data-migration-job-xj7k2",
+                "namespace": "prod",
+                "uid": "f9c3d467-8a2b-9c7f-4d6e-3b0c8a2f7d46",
+                "resourceVersion": "284760456",
+                "creationTimestamp": "2026-04-16T10:00:00Z",
+                "labels": {
+                    "job-name": "data-migration-job-20260416",
+                    "app": "data-migration"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "data-migration-job-20260416",
+                        "uid": "8a2b9c7f-4d6e-3b0c-8a2f-7d46f9c3d467",
+                        "controller": true
+                    }
+                ]
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "migrator",
+                        "image": "registry.internal.corp/data-migration:v1.0.5",
+                        "resources": {
+                            "requests": {
+                                "cpu": "500m",
+                                "memory": "1Gi"
+                            },
+                            "limits": {
+                                "cpu": "1000m",
+                                "memory": "2Gi"
+                            }
+                        }
+                    }
+                ],
+                "restartPolicy": "OnFailure",
+                "nodeName": "ip-10-0-12-67.ec2.internal"
+            },
+            "status": {
+                "phase": "Succeeded",
+                "conditions": [
+                    {
+                        "type": "Initialized",
+                        "status": "True",
+                        "reason": "PodCompleted"
+                    },
+                    {
+                        "type": "Ready",
+                        "status": "False",
+                        "reason": "PodCompleted"
+                    },
+                    {
+                        "type": "ContainersReady",
+                        "status": "False",
+                        "reason": "PodCompleted"
+                    },
+                    {
+                        "type": "PodScheduled",
+                        "status": "True"
+                    }
+                ],
+                "hostIP": "10.0.12.67",
+                "podIP": "10.244.4.156",
+                "startTime": "2026-04-16T10:00:03Z",
+                "containerStatuses": [
+                    {
+                        "name": "migrator",
+                        "state": {
+                            "terminated": {
+                                "exitCode": 0,
+                                "reason": "Completed",
+                                "startedAt": "2026-04-16T10:00:15Z",
+                                "finishedAt": "2026-04-16T10:42:37Z"
+                            }
+                        },
+                        "ready": false,
+                        "restartCount": 0,
+                        "started": false
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "redis-cache-0",
+                "namespace": "prod",
+                "uid": "a0d4e578-9b3c-0d8a-5e7f-4c1d9b3a8e57",
+                "resourceVersion": "284760678",
+                "creationTimestamp": "2026-03-28T08:00:00Z",
+                "labels": {
+                    "app": "redis-cache",
+                    "role": "master",
+                    "statefulset.kubernetes.io/pod-name": "redis-cache-0",
+                    "environment": "prod"
+                },
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "StatefulSet",
+                        "name": "redis-cache",
+                        "uid": "9b3c0d8a-5e7f-4c1d-9b3a-8e57a0d4e578",
+                        "controller": true
+                    }
+                ]
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "redis",
+                        "image": "redis:7.2.4-alpine",
+                        "ports": [
+                            {
+                                "containerPort": 6379,
+                                "name": "redis",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "requests": {
+                                "cpu": "200m",
+                                "memory": "512Mi"
+                            },
+                            "limits": {
+                                "cpu": "1000m",
+                                "memory": "2Gi"
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "name": "redis-data",
+                                "mountPath": "/data"
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "ip-10-0-12-89.ec2.internal",
+                "volumes": [
+                    {
+                        "name": "redis-data",
+                        "persistentVolumeClaim": {
+                            "claimName": "redis-data-redis-cache-0"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastTransitionTime": "2026-03-28T08:00:23Z"
+                    }
+                ],
+                "hostIP": "10.0.12.89",
+                "podIP": "10.244.5.201",
+                "startTime": "2026-03-28T08:00:00Z",
+                "containerStatuses": [
+                    {
+                        "name": "redis",
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-03-28T08:00:20Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 0,
+                        "started": true
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "fraud-detector-5d8e3f7b9c-w4x8y",
+                "namespace": "prod",
+                "uid": "b1e5f689-0c4d-1e9b-6f8a-5d2e0c4b9f68",
+                "resourceVersion": "284760890",
+                "creationTimestamp": "2026-04-16T13:52:41Z",
+                "labels": {
+                    "app": "fraud-detector",
+                    "version": "v2.2.0",
+                    "tier": "backend",
+                    "environment": "prod",
+                    "team": "risk-platform"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "name": "detector",
+                        "image": "registry.internal.corp/fraud-detector:v2.2.0",
+                        "ports": [
+                            {
+                                "containerPort": 8080
+                            }
+                        ],
+                        "env": [
+                            {
+                                "name": "MODEL_PATH",
+                                "value": "/models/fraud-v2.2.0"
+                            },
+                            {
+                                "name": "INFERENCE_TIMEOUT_MS",
+                                "value": "250"
+                            }
+                        ],
+                        "resources": {
+                            "requests": {
+                                "cpu": "1000m",
+                                "memory": "2Gi"
+                            },
+                            "limits": {
+                                "cpu": "4000m",
+                                "memory": "8Gi"
+                            }
+                        },
+                        "livenessProbe": {
+                            "httpGet": {
+                                "path": "/healthz",
+                                "port": 8080
+                            },
+                            "initialDelaySeconds": 60,
+                            "periodSeconds": 15,
+                            "failureThreshold": 3
+                        }
+                    }
+                ],
+                "nodeName": "ip-10-0-12-112.ec2.internal"
+            },
+            "status": {
+                "phase": "Running",
+                "conditions": [
+                    {
+                        "type": "Ready",
+                        "status": "True",
+                        "lastTransitionTime": "2026-04-16T13:53:28Z"
+                    }
+                ],
+                "hostIP": "10.0.12.112",
+                "podIP": "10.244.6.87",
+                "startTime": "2026-04-16T13:52:41Z",
+                "containerStatuses": [
+                    {
+                        "name": "detector",
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-04-16T13:53:15Z"
+                            }
+                        },
+                        "ready": true,
+                        "restartCount": 1,
+                        "lastState": {
+                            "terminated": {
+                                "exitCode": 143,
+                                "reason": "Error",
+                                "startedAt": "2026-04-16T13:52:55Z",
+                                "finishedAt": "2026-04-16T13:53:10Z",
+                                "message": "liveness probe failed: Get http://10.244.6.87:8080/healthz: context deadline exceeded"
+                            }
+                        },
+                        "started": true
+                    }
+                ],
+                "qosClass": "Burstable"
+            }
+        }
+    ]
+}

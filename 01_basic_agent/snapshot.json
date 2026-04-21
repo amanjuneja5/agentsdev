@@ -1,0 +1,53 @@
+{
+    "cluster_id": "dev-cluster-01",
+    "pods": [
+        {
+            "name": "web-7d4b9",
+            "namespace": "production",
+            "status": "CrashLoopBackOff",
+            "restarts": 47,
+            "image": "nginx:latest",
+            "limits": {}
+        },
+        {
+            "name": "api-6c3a1",
+            "namespace": "production",
+            "status": "Running",
+            "restarts": 0,
+            "image": "myapp:v2",
+            "limits": {
+                "cpu": "500m",
+                "memory": "256Mi"
+            }
+        },
+        {
+            "name": "worker-2b1f",
+            "namespace": "jobs",
+            "status": "OOMKilled",
+            "restarts": 12,
+            "image": "processor:v1",
+            "limits": {
+                "cpu": "200m"
+            }
+        },
+        {
+            "name": "cache-9a3e",
+            "namespace": "production",
+            "status": "Pending",
+            "restarts": 0,
+            "image": "redis:7",
+            "limits": {}
+        },
+        {
+            "name": "monitor-4c2d",
+            "namespace": "monitoring",
+            "status": "Running",
+            "restarts": 1,
+            "image": "prometheus:v2.45",
+            "limits": {
+                "cpu": "100m",
+                "memory": "512Mi"
+            }
+        }
+    ]
+}
