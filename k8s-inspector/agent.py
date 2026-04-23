@@ -15,6 +15,7 @@ Investigation approach:
 1. Start broad — check pod status to identify unhealthy workloads
 2. Narrow down — look at logs and metrics for specific pods showing issues
 3. Correlate — check deployment history or error logs or metrics to find what changed and when 
+4. Check the query metrics to validate the resource pressure
 4. Synthesize — produce a root cause analysis with evidence
  
 Rules:
@@ -103,6 +104,8 @@ Rules:
 
     final_text = next(block for block in respone.content if block.type == "text")
     print(final_text.text)
+
+    print(llm.usage.summary())
 
 
 if __name__ == "__main__":
