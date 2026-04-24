@@ -1,0 +1,121 @@
+{
+    "rollback_responses": {
+        "order-processor": {
+            "success": true,
+            "message": "deployment.apps/order-processor rolled back to revision 13 (v3.0.8)",
+            "previous_version": "v3.1.0-rc2",
+            "rolled_back_to": "v3.0.8",
+            "timestamp": "2026-04-16T14:22:00Z",
+            "note": "Pod will restart with previous configuration. Replica count remains at 1."
+        },
+        "payments-api": {
+            "success": true,
+            "message": "deployment.apps/payments-api rolled back to revision 31 (v2.4.0)",
+            "previous_version": "v2.4.1",
+            "rolled_back_to": "v2.4.0",
+            "timestamp": "2026-04-16T14:22:00Z"
+        },
+        "analytics-ingester": {
+            "success": true,
+            "message": "deployment.apps/analytics-ingester rolled back to revision 7 (v1.9.4)",
+            "previous_version": "v2.0.1",
+            "rolled_back_to": "v1.9.4",
+            "timestamp": "2026-04-16T14:22:00Z",
+            "note": "Resource requests will revert: cpu 1000m→500m, memory 2Gi→1Gi. This may resolve the scheduling issue."
+        },
+        "redis-cache": {
+            "success": false,
+            "error": "StatefulSet rollback not supported via this tool. Use kubectl directly.",
+            "suggestion": "StatefulSets require careful rollback — update the StatefulSet spec manually and apply."
+        }
+    },
+    "scale_responses": {
+        "order-processor": {
+            "1": {
+                "success": true,
+                "message": "deployment.apps/order-processor scaled to 1 replica (already at 1)",
+                "current": 1,
+                "target": 1,
+                "note": "No change — already at requested scale"
+            },
+            "2": {
+                "success": true,
+                "message": "deployment.apps/order-processor scaled to 2 replicas",
+                "current": 1,
+                "target": 2,
+                "timestamp": "2026-04-16T14:22:00Z"
+            },
+            "3": {
+                "success": true,
+                "message": "deployment.apps/order-processor scaled to 3 replicas",
+                "current": 1,
+                "target": 3,
+                "timestamp": "2026-04-16T14:22:00Z"
+            },
+            "0": {
+                "success": true,
+                "message": "deployment.apps/order-processor scaled to 0 replicas (all pods terminated)",
+                "current": 1,
+                "target": 0,
+                "timestamp": "2026-04-16T14:22:00Z",
+                "warning": "Service will be unavailable"
+            }
+        },
+        "payments-api": {
+            "1": {
+                "success": true,
+                "message": "deployment.apps/payments-api scaled to 1 replica",
+                "current": 2,
+                "target": 1,
+                "warning": "Reducing below 2 replicas removes redundancy"
+            },
+            "2": {
+                "success": true,
+                "message": "deployment.apps/payments-api scaled to 2 replicas (already at 2)",
+                "current": 2,
+                "target": 2,
+                "note": "No change"
+            },
+            "3": {
+                "success": true,
+                "message": "deployment.apps/payments-api scaled to 3 replicas",
+                "current": 2,
+                "target": 3,
+                "timestamp": "2026-04-16T14:22:00Z"
+            },
+            "4": {
+                "success": true,
+                "message": "deployment.apps/payments-api scaled to 4 replicas",
+                "current": 2,
+                "target": 4,
+                "timestamp": "2026-04-16T14:22:00Z"
+            }
+        },
+        "analytics-ingester": {
+            "0": {
+                "success": true,
+                "message": "deployment.apps/analytics-ingester scaled to 0 replicas",
+                "current": 1,
+                "target": 0,
+                "timestamp": "2026-04-16T14:22:00Z"
+            },
+            "1": {
+                "success": false,
+                "error": "Scale unchanged — pod is Pending due to insufficient cluster resources. Adding replicas will not help until cluster capacity is increased.",
+                "current": 1,
+                "target": 1
+            },
+            "2": {
+                "success": false,
+                "error": "Cannot scale to 2 — insufficient cluster resources for even 1 replica. Resolve scheduling issue first.",
+                "current": 1,
+                "target": 2
+            }
+        },
+        "redis-cache": {
+            "success": false,
+            "error": "Cannot scale StatefulSet via this tool. StatefulSet scaling requires ordered pod creation.",
+            "suggestion": "Use kubectl scale statefulset redis-cache --replicas=N"
+        }
+    }
+}

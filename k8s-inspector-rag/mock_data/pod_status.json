@@ -1,0 +1,535 @@
+{
+    "prod": [
+        {
+            "name": "payments-api-7d8f9c5b4d-x2p9k",
+            "namespace": "prod",
+            "status": "Running",
+            "ready": true,
+            "ready_containers": "2/2",
+            "restarts": 0,
+            "age": "6d",
+            "node": "ip-10-0-12-45.ec2.internal",
+            "labels": {
+                "app": "payments-api",
+                "version": "v2.4.1",
+                "team": "payments-platform",
+                "tier": "backend"
+            },
+            "containers": [
+                {
+                    "name": "payments-api",
+                    "image": "registry.internal.corp/payments-api:v2.4.1",
+                    "ready": true,
+                    "restarts": 0,
+                    "state": "running",
+                    "started_at": "2026-04-14T09:23:40Z"
+                },
+                {
+                    "name": "istio-proxy",
+                    "image": "istio/proxyv2:1.20.3",
+                    "ready": true,
+                    "restarts": 0,
+                    "state": "running",
+                    "started_at": "2026-04-14T09:23:35Z"
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "500m",
+                    "memory": "1Gi"
+                },
+                "limits": {
+                    "cpu": "2000m",
+                    "memory": "4Gi"
+                },
+                "usage": {
+                    "cpu": "320m",
+                    "memory": "1.8Gi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": true,
+                "Ready": true
+            }
+        },
+        {
+            "name": "payments-api-7d8f9c5b4d-m3n7q",
+            "namespace": "prod",
+            "status": "Running",
+            "ready": true,
+            "ready_containers": "2/2",
+            "restarts": 0,
+            "age": "6d",
+            "node": "ip-10-0-12-67.ec2.internal",
+            "labels": {
+                "app": "payments-api",
+                "version": "v2.4.1",
+                "team": "payments-platform",
+                "tier": "backend"
+            },
+            "containers": [
+                {
+                    "name": "payments-api",
+                    "image": "registry.internal.corp/payments-api:v2.4.1",
+                    "ready": true,
+                    "restarts": 0,
+                    "state": "running"
+                },
+                {
+                    "name": "istio-proxy",
+                    "image": "istio/proxyv2:1.20.3",
+                    "ready": true,
+                    "restarts": 0,
+                    "state": "running"
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "500m",
+                    "memory": "1Gi"
+                },
+                "limits": {
+                    "cpu": "2000m",
+                    "memory": "4Gi"
+                },
+                "usage": {
+                    "cpu": "290m",
+                    "memory": "1.6Gi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": true,
+                "Ready": true
+            }
+        },
+        {
+            "name": "inventory-service-6b4d8e7c9f-k3m8n",
+            "namespace": "prod",
+            "status": "Running",
+            "ready": true,
+            "ready_containers": "1/1",
+            "restarts": 0,
+            "age": "6d",
+            "node": "ip-10-0-12-67.ec2.internal",
+            "labels": {
+                "app": "inventory-service",
+                "version": "v1.8.3",
+                "team": "inventory-platform",
+                "tier": "backend"
+            },
+            "containers": [
+                {
+                    "name": "inventory-service",
+                    "image": "registry.internal.corp/inventory-service:v1.8.3",
+                    "ready": true,
+                    "restarts": 0,
+                    "state": "running"
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "250m",
+                    "memory": "512Mi"
+                },
+                "limits": {
+                    "cpu": "1000m",
+                    "memory": "2Gi"
+                },
+                "usage": {
+                    "cpu": "180m",
+                    "memory": "420Mi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": true,
+                "Ready": true
+            }
+        },
+        {
+            "name": "order-processor-9f2e8d5b7c-q7r4t",
+            "namespace": "prod",
+            "status": "CrashLoopBackOff",
+            "ready": false,
+            "ready_containers": "0/1",
+            "restarts": 23,
+            "age": "28m",
+            "node": "ip-10-0-12-89.ec2.internal",
+            "labels": {
+                "app": "order-processor",
+                "version": "v3.1.0-rc2",
+                "tier": "backend"
+            },
+            "containers": [
+                {
+                    "name": "order-processor",
+                    "image": "registry.internal.corp/order-processor:v3.1.0-rc2",
+                    "ready": false,
+                    "restarts": 23,
+                    "state": "waiting",
+                    "waiting_reason": "CrashLoopBackOff",
+                    "waiting_message": "back-off 5m0s restarting failed container=order-processor",
+                    "last_termination": {
+                        "exit_code": 137,
+                        "reason": "OOMKilled",
+                        "started_at": "2026-04-16T14:17:45Z",
+                        "finished_at": "2026-04-16T14:18:21Z"
+                    }
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "500m",
+                    "memory": "1Gi"
+                },
+                "limits": {
+                    "cpu": "2000m",
+                    "memory": "4Gi"
+                },
+                "usage": {
+                    "cpu": "0m",
+                    "memory": "0Mi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": false,
+                "Ready": false
+            }
+        },
+        {
+            "name": "notification-worker-3c7a5e9b2d-h6j2l",
+            "namespace": "prod",
+            "status": "Running",
+            "ready": true,
+            "ready_containers": "1/1",
+            "restarts": 7,
+            "age": "1d",
+            "node": "ip-10-0-12-45.ec2.internal",
+            "labels": {
+                "app": "notification-worker",
+                "version": "v1.3.7",
+                "tier": "backend"
+            },
+            "containers": [
+                {
+                    "name": "worker",
+                    "image": "registry.internal.corp/notification-worker:v1.3.7",
+                    "ready": true,
+                    "restarts": 7,
+                    "state": "running",
+                    "started_at": "2026-04-16T12:10:05Z",
+                    "last_termination": {
+                        "exit_code": 1,
+                        "reason": "Error",
+                        "started_at": "2026-04-16T12:05:30Z",
+                        "finished_at": "2026-04-16T12:09:58Z"
+                    }
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "100m",
+                    "memory": "256Mi"
+                },
+                "limits": {
+                    "cpu": "500m",
+                    "memory": "1Gi"
+                },
+                "usage": {
+                    "cpu": "85m",
+                    "memory": "310Mi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": true,
+                "Ready": true
+            }
+        },
+        {
+            "name": "analytics-ingester-8b2f4d7e6c-m9n3p",
+            "namespace": "prod",
+            "status": "Pending",
+            "ready": false,
+            "ready_containers": "0/1",
+            "restarts": 0,
+            "age": "12m",
+            "node": null,
+            "labels": {
+                "app": "analytics-ingester",
+                "version": "v2.0.1",
+                "tier": "data"
+            },
+            "containers": [
+                {
+                    "name": "ingester",
+                    "image": "registry.internal.corp/analytics-ingester:v2.0.1",
+                    "ready": false,
+                    "restarts": 0,
+                    "state": "waiting",
+                    "waiting_reason": "ContainerCreating"
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "1000m",
+                    "memory": "2Gi"
+                },
+                "limits": {
+                    "cpu": "4000m",
+                    "memory": "8Gi"
+                },
+                "usage": {
+                    "cpu": "0m",
+                    "memory": "0Mi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": false,
+                "PodScheduled_reason": "Unschedulable",
+                "PodScheduled_message": "0/12 nodes are available: 3 Insufficient cpu, 5 Insufficient memory, 4 node(s) had untolerated taint {node-role.kubernetes.io/master: }"
+            }
+        },
+        {
+            "name": "fraud-detector-5d8e3f7b9c-w4x8y",
+            "namespace": "prod",
+            "status": "Running",
+            "ready": true,
+            "ready_containers": "1/1",
+            "restarts": 1,
+            "age": "38m",
+            "node": "ip-10-0-12-112.ec2.internal",
+            "labels": {
+                "app": "fraud-detector",
+                "version": "v2.2.0",
+                "team": "risk-platform",
+                "tier": "backend"
+            },
+            "containers": [
+                {
+                    "name": "detector",
+                    "image": "registry.internal.corp/fraud-detector:v2.2.0",
+                    "ready": true,
+                    "restarts": 1,
+                    "state": "running",
+                    "started_at": "2026-04-16T13:53:15Z",
+                    "last_termination": {
+                        "exit_code": 143,
+                        "reason": "Error",
+                        "message": "liveness probe failed: context deadline exceeded",
+                        "started_at": "2026-04-16T13:52:55Z",
+                        "finished_at": "2026-04-16T13:53:10Z"
+                    }
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "1000m",
+                    "memory": "2Gi"
+                },
+                "limits": {
+                    "cpu": "4000m",
+                    "memory": "8Gi"
+                },
+                "usage": {
+                    "cpu": "2100m",
+                    "memory": "5.2Gi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": true,
+                "Ready": true
+            }
+        },
+        {
+            "name": "redis-cache-0",
+            "namespace": "prod",
+            "status": "Running",
+            "ready": true,
+            "ready_containers": "1/1",
+            "restarts": 0,
+            "age": "23d",
+            "node": "ip-10-0-12-89.ec2.internal",
+            "labels": {
+                "app": "redis-cache",
+                "role": "master"
+            },
+            "containers": [
+                {
+                    "name": "redis",
+                    "image": "redis:7.2.4-alpine",
+                    "ready": true,
+                    "restarts": 0,
+                    "state": "running",
+                    "started_at": "2026-03-28T08:00:20Z"
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "200m",
+                    "memory": "512Mi"
+                },
+                "limits": {
+                    "cpu": "1000m",
+                    "memory": "2Gi"
+                },
+                "usage": {
+                    "cpu": "150m",
+                    "memory": "890Mi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": true,
+                "Ready": true
+            }
+        },
+        {
+            "name": "data-migration-job-xj7k2",
+            "namespace": "prod",
+            "status": "Succeeded",
+            "ready": false,
+            "ready_containers": "0/1",
+            "restarts": 0,
+            "age": "4h",
+            "node": "ip-10-0-12-67.ec2.internal",
+            "labels": {
+                "app": "data-migration",
+                "job-name": "data-migration-job-20260416"
+            },
+            "containers": [
+                {
+                    "name": "migrator",
+                    "image": "registry.internal.corp/data-migration:v1.0.5",
+                    "ready": false,
+                    "restarts": 0,
+                    "state": "terminated",
+                    "exit_code": 0,
+                    "reason": "Completed",
+                    "finished_at": "2026-04-16T10:42:37Z"
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "500m",
+                    "memory": "1Gi"
+                },
+                "limits": {
+                    "cpu": "1000m",
+                    "memory": "2Gi"
+                },
+                "usage": {
+                    "cpu": "0m",
+                    "memory": "0Mi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": false,
+                "Ready": false
+            }
+        }
+    ],
+    "staging": [
+        {
+            "name": "payments-api-staging-abc123-r8s2t",
+            "namespace": "staging",
+            "status": "Running",
+            "ready": true,
+            "ready_containers": "1/1",
+            "restarts": 0,
+            "age": "2d",
+            "node": "ip-10-0-14-22.ec2.internal",
+            "labels": {
+                "app": "payments-api",
+                "version": "v2.5.0-beta1",
+                "tier": "backend"
+            },
+            "containers": [
+                {
+                    "name": "payments-api",
+                    "image": "registry.internal.corp/payments-api:v2.5.0-beta1",
+                    "ready": true,
+                    "restarts": 0,
+                    "state": "running"
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "250m",
+                    "memory": "512Mi"
+                },
+                "limits": {
+                    "cpu": "1000m",
+                    "memory": "2Gi"
+                },
+                "usage": {
+                    "cpu": "120m",
+                    "memory": "380Mi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": true,
+                "Ready": true
+            }
+        },
+        {
+            "name": "order-processor-staging-def456-p5q9r",
+            "namespace": "staging",
+            "status": "Running",
+            "ready": true,
+            "ready_containers": "1/1",
+            "restarts": 0,
+            "age": "2d",
+            "node": "ip-10-0-14-22.ec2.internal",
+            "labels": {
+                "app": "order-processor",
+                "version": "v3.1.0-rc2",
+                "tier": "backend"
+            },
+            "containers": [
+                {
+                    "name": "order-processor",
+                    "image": "registry.internal.corp/order-processor:v3.1.0-rc2",
+                    "ready": true,
+                    "restarts": 0,
+                    "state": "running"
+                }
+            ],
+            "resources": {
+                "requests": {
+                    "cpu": "500m",
+                    "memory": "1Gi"
+                },
+                "limits": {
+                    "cpu": "2000m",
+                    "memory": "8Gi"
+                },
+                "usage": {
+                    "cpu": "410m",
+                    "memory": "3.2Gi"
+                }
+            },
+            "conditions": {
+                "PodScheduled": true,
+                "Initialized": true,
+                "ContainersReady": true,
+                "Ready": true
+            }
+        }
+    ]
+}

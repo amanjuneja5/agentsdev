@@ -1,0 +1,200 @@
+{
+    "order-processor": {
+        "current_version": "v3.1.0-rc2",
+        "current_replicas": 1,
+        "deployments": [
+            {
+                "timestamp": "2026-04-16T14:12:03Z",
+                "version": "v3.1.0-rc2",
+                "previous_version": "v3.0.8",
+                "deployed_by": "ci-bot (Jenkins pipeline #4821)",
+                "replicas": {
+                    "before": 2,
+                    "after": 1
+                },
+                "changes": [
+                    "Kafka consumer batch size increased from 100 to 500",
+                    "Added new order validation middleware",
+                    "Updated kafka-client library from 3.4.0 to 3.6.1",
+                    "Reduced replica count from 2 to 1 for cost savings"
+                ],
+                "resource_spec": {
+                    "cpu_request": "500m",
+                    "cpu_limit": "2000m",
+                    "memory_request": "1Gi",
+                    "memory_limit": "4Gi"
+                },
+                "rollback_available": true,
+                "rollback_target": "v3.0.8",
+                "revision": 14
+            },
+            {
+                "timestamp": "2026-04-10T09:30:00Z",
+                "version": "v3.0.8",
+                "previous_version": "v3.0.7",
+                "deployed_by": "deploy-bot",
+                "replicas": {
+                    "before": 2,
+                    "after": 2
+                },
+                "changes": [
+                    "Bug fix: duplicate order prevention",
+                    "Logging improvements"
+                ],
+                "resource_spec": {
+                    "cpu_request": "500m",
+                    "cpu_limit": "2000m",
+                    "memory_request": "1Gi",
+                    "memory_limit": "4Gi"
+                },
+                "rollback_available": true,
+                "rollback_target": "v3.0.7",
+                "revision": 13
+            },
+            {
+                "timestamp": "2026-03-28T11:00:00Z",
+                "version": "v3.0.7",
+                "previous_version": "v3.0.6",
+                "deployed_by": "deploy-bot",
+                "replicas": {
+                    "before": 2,
+                    "after": 2
+                },
+                "changes": [
+                    "Performance optimization: connection pool tuning",
+                    "Added Prometheus metrics for Kafka consumer lag"
+                ],
+                "resource_spec": {
+                    "cpu_request": "500m",
+                    "cpu_limit": "2000m",
+                    "memory_request": "1Gi",
+                    "memory_limit": "4Gi"
+                },
+                "rollback_available": true,
+                "rollback_target": "v3.0.6",
+                "revision": 12
+            }
+        ]
+    },
+    "payments-api": {
+        "current_version": "v2.4.1",
+        "current_replicas": 2,
+        "deployments": [
+            {
+                "timestamp": "2026-04-14T09:23:17Z",
+                "version": "v2.4.1",
+                "previous_version": "v2.4.0",
+                "deployed_by": "deploy-bot",
+                "replicas": {
+                    "before": 2,
+                    "after": 2
+                },
+                "changes": [
+                    "PCI compliance audit fixes",
+                    "Updated TLS certificates",
+                    "Minor logging format changes"
+                ],
+                "resource_spec": {
+                    "cpu_request": "500m",
+                    "cpu_limit": "2000m",
+                    "memory_request": "1Gi",
+                    "memory_limit": "4Gi"
+                },
+                "rollback_available": true,
+                "rollback_target": "v2.4.0",
+                "revision": 31
+            }
+        ]
+    },
+    "analytics-ingester": {
+        "current_version": "v2.0.1",
+        "current_replicas": 1,
+        "deployments": [
+            {
+                "timestamp": "2026-04-16T14:30:15Z",
+                "version": "v2.0.1",
+                "previous_version": "v1.9.4",
+                "deployed_by": "ci-bot (Jenkins pipeline #4823)",
+                "replicas": {
+                    "before": 1,
+                    "after": 1
+                },
+                "changes": [
+                    "Major version upgrade: migrated to Flink-based pipeline",
+                    "CPU request increased from 500m to 1000m",
+                    "Memory request increased from 1Gi to 2Gi",
+                    "Memory limit increased from 4Gi to 8Gi",
+                    "New dependency: Apache Flink 1.18.1"
+                ],
+                "resource_spec": {
+                    "cpu_request": "1000m",
+                    "cpu_limit": "4000m",
+                    "memory_request": "2Gi",
+                    "memory_limit": "8Gi"
+                },
+                "rollback_available": true,
+                "rollback_target": "v1.9.4",
+                "revision": 8
+            }
+        ]
+    },
+    "notification-worker": {
+        "current_version": "v1.3.7",
+        "current_replicas": 1,
+        "deployments": [
+            {
+                "timestamp": "2026-04-15T18:45:22Z",
+                "version": "v1.3.7",
+                "previous_version": "v1.3.6",
+                "deployed_by": "deploy-bot",
+                "replicas": {
+                    "before": 1,
+                    "after": 1
+                },
+                "changes": [
+                    "Added retry logic for SMTP timeouts",
+                    "Increased SMTP connection timeout from 5s to 15s"
+                ],
+                "resource_spec": {
+                    "cpu_request": "100m",
+                    "cpu_limit": "500m",
+                    "memory_request": "256Mi",
+                    "memory_limit": "1Gi"
+                },
+                "rollback_available": true,
+                "rollback_target": "v1.3.6",
+                "revision": 19
+            }
+        ]
+    },
+    "fraud-detector": {
+        "current_version": "v2.2.0",
+        "current_replicas": 1,
+        "deployments": [
+            {
+                "timestamp": "2026-04-16T13:52:41Z",
+                "version": "v2.2.0",
+                "previous_version": "v2.1.3",
+                "deployed_by": "ci-bot (Jenkins pipeline #4819)",
+                "replicas": {
+                    "before": 1,
+                    "after": 1
+                },
+                "changes": [
+                    "Updated fraud detection model to v2.2.0",
+                    "Model loading time increased from 5s to 12s (larger model)",
+                    "Increased liveness probe initialDelaySeconds from 30 to 60"
+                ],
+                "resource_spec": {
+                    "cpu_request": "1000m",
+                    "cpu_limit": "4000m",
+                    "memory_request": "2Gi",
+                    "memory_limit": "8Gi"
+                },
+                "rollback_available": true,
+                "rollback_target": "v2.1.3",
+                "revision": 7
+            }
+        ]
+    }
+}
