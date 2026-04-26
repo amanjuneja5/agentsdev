@@ -73,8 +73,6 @@ class ErrorLogs(BaseTool):
             
             entries = entries[:max_lines]
 
-            print(entries)
-            
             return json.dumps({
                 "pods": pod_name,
                 "filter": level_filter,

@@ -1,53 +1,39 @@
 import os 
-import re
 import json
 from pathlib import Path
 import chromadb
 
+from rag.chunker import chunk_by_headers
 
-base_path = Path(__file__).cwd()
-runbook_dir = base_path / "runbooks"
 all_chunks = []
 
+def build_index(runbook_dir):
+    
+    base_path = Path(__file__).cwd()
+    runbook_dir = base_path / runbook_dir
 
-def chunk_by_headers(content, source):
-
-    title_match = re.match(r'^# (.+)',content)
-    doc_title = title_match.group(1) if title_match else source
-
-    sections = re.split(r'\n(?=##)', content)
-
-    chunks = []
-    for section in sections:
-        section = section.strip()
-        if not section or section.startswith('#') and not section.startswith('##'):
+    for filename in os.listdir(runbook_dir):
+        if not filename.endswith(".md"):
             continue
 
-        chunk_text = f"[{doc_title}]\n{section}"
+        with open(os.path.join(runbook_dir, filename), "r") as f:
+            content = f.read()
 
-        heading_match = re.match(r'## (.+)', section)
-        heading = heading_match.group(1) if heading_match else "intro"
+        chunks = chunk_by_headers(content, filename)
+        all_chunks.append(chunks)
+        
 
-        chunks.append({
-            "text": chunk_text,
-            "source": source,
-            "section": heading
-        })
-    
-    return chunks
+    chroma_client = chromadb.Client()
 
-for filename in os.listdir(runbook_dir):
-    if not filename.endswith(".md"):
-        continue
+    collection = chroma_client.get_or_create_collection(
+        name="runbooks",
+        metadata={"hf:space": "cosine"}
+    )
 
-    with open(os.path.join(runbook_dir, filename), "r") as f:
-        content = f.read()
+    collection.add(
+        ids=[f"doc_id{i}" for i in range(len(chunks))],
+        documents = [c["text"] for c in chunks],
+        metadatas=[{"source":c.get("source",""), "section": c.get("section","")} for c in chunks]
+    )
 
-    chunks = chunk_by_headers(content, filename)
-    all_chunks.append(chunks)
-    
-
-
-# chroma_client = chromadb.Client()
-
-# collection = chroma_client.create_collection(name="runbooks")
+    return collection

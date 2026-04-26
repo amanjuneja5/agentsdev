@@ -4,19 +4,29 @@ import os
 
 from claude_client import LLMClient
 from tools import ALL_SCHEMAS, TOOL_MAP
+from rag.indexer import build_index
+from rag.retriever import RetreiverClient
 
 def main():
-    
+
+    collection = build_index("runbooks")
+    retreiver = RetreiverClient(collection)
+
+    TOOL_MAP["search_runbooks"].retreiver = retreiver
+
     SYSTEM_PROMPT = """\
 You are an SRE investigation agent. Your job is to diagnose issues in a \
 Kubernetes-based production environment.
  
 Investigation approach:
 1. Start broad — check pod status to identify unhealthy workloads
-2. Narrow down — look at logs and metrics for specific pods showing issues
-3. Correlate — check deployment history or error logs or metrics to find what changed and when 
-4. Check the query metrics to validate the resource pressure
-4. Synthesize — produce a root cause analysis with evidence
+2. Search runbooks for relevant troubleshooting procedures — use search_runbooks \
+whenever you identify a specific issue type (OOM, scheduling failure, deployment \
+problem, etc.)
+3. Narrow down — look at logs and metrics for specific pods showing issues
+4. Correlate — check deployment history or error logs or metrics to find what changed and when 
+5. Check the query metrics to validate the resource pressure
+6. If remediation is needed, propose rollback_deployment or scale_replicas
  
 Rules:
 - Always start by understanding the current state before diving into specifics
