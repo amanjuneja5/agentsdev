@@ -1,0 +1,279 @@
+{
+    "order-processor-9f2e8d5b7c-q7r4t": [
+        {
+            "ts": "2026-04-16T14:18:21.003Z",
+            "level": "ERROR",
+            "logger": "main",
+            "msg": "Container killed by OOM killer",
+            "details": "exit code 137"
+        },
+        {
+            "ts": "2026-04-16T14:17:45.123Z",
+            "level": "ERROR",
+            "logger": "main",
+            "msg": "java.lang.OutOfMemoryError: Java heap space",
+            "stacktrace": "at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1244) > at com.corp.orders.consumer.OrderConsumer.consumeBatch(OrderConsumer.java:87) > at com.corp.orders.consumer.OrderConsumer.run(OrderConsumer.java:42)"
+        },
+        {
+            "ts": "2026-04-16T14:17:44.891Z",
+            "level": "WARN",
+            "logger": "kafka-consumer",
+            "msg": "Batch processing took 12847ms for 500 records",
+            "threshold_ms": 5000
+        },
+        {
+            "ts": "2026-04-16T14:17:40.003Z",
+            "level": "INFO",
+            "logger": "kafka-consumer",
+            "msg": "Polling batch of 500 records from topic: orders.incoming"
+        },
+        {
+            "ts": "2026-04-16T14:17:28.112Z",
+            "level": "WARN",
+            "logger": "kafka-consumer",
+            "msg": "Batch processing took 11923ms for 500 records",
+            "threshold_ms": 5000
+        },
+        {
+            "ts": "2026-04-16T14:17:16.034Z",
+            "level": "INFO",
+            "logger": "kafka-consumer",
+            "msg": "Polling batch of 500 records from topic: orders.incoming"
+        },
+        {
+            "ts": "2026-04-16T14:16:55.771Z",
+            "level": "WARN",
+            "logger": "gc",
+            "msg": "GC pause 2847ms",
+            "heap_used": "3.8Gi",
+            "heap_max": "4.0Gi",
+            "usage_pct": 95
+        },
+        {
+            "ts": "2026-04-16T14:16:42.445Z",
+            "level": "WARN",
+            "logger": "gc",
+            "msg": "GC pause 1923ms",
+            "heap_used": "3.6Gi",
+            "heap_max": "4.0Gi",
+            "usage_pct": 90
+        },
+        {
+            "ts": "2026-04-16T14:16:38.234Z",
+            "level": "WARN",
+            "logger": "gc",
+            "msg": "GC pause 1456ms",
+            "heap_used": "3.4Gi",
+            "heap_max": "4.0Gi",
+            "usage_pct": 85
+        },
+        {
+            "ts": "2026-04-16T14:16:30.201Z",
+            "level": "INFO",
+            "logger": "kafka-consumer",
+            "msg": "Consumer group rebalanced: assigned partitions [0, 1, 2, 3]"
+        },
+        {
+            "ts": "2026-04-16T14:16:28.003Z",
+            "level": "INFO",
+            "logger": "main",
+            "msg": "Starting order-processor v3.1.0-rc2"
+        },
+        {
+            "ts": "2026-04-16T14:16:28.001Z",
+            "level": "INFO",
+            "logger": "main",
+            "msg": "Configuration loaded",
+            "kafka_batch_size": 500,
+            "consumer_group": "order-processor-prod",
+            "max_heap": "4g"
+        }
+    ],
+    "payments-api-7d8f9c5b4d-x2p9k": [
+        {
+            "ts": "2026-04-16T14:18:01.234Z",
+            "level": "INFO",
+            "logger": "http",
+            "msg": "POST /api/v1/payments 201",
+            "duration_ms": 45
+        },
+        {
+            "ts": "2026-04-16T14:17:58.112Z",
+            "level": "INFO",
+            "logger": "http",
+            "msg": "POST /api/v1/payments 201",
+            "duration_ms": 38
+        },
+        {
+            "ts": "2026-04-16T14:17:55.891Z",
+            "level": "INFO",
+            "logger": "http",
+            "msg": "GET /healthz 200",
+            "duration_ms": 2
+        },
+        {
+            "ts": "2026-04-16T14:17:52.003Z",
+            "level": "INFO",
+            "logger": "http",
+            "msg": "POST /api/v1/payments 201",
+            "duration_ms": 52
+        },
+        {
+            "ts": "2026-04-16T14:17:49.445Z",
+            "level": "INFO",
+            "logger": "http",
+            "msg": "POST /api/v1/payments/refund 201",
+            "duration_ms": 67
+        }
+    ],
+    "notification-worker-3c7a5e9b2d-h6j2l": [
+        {
+            "ts": "2026-04-16T14:18:02.567Z",
+            "level": "WARN",
+            "logger": "smtp",
+            "msg": "Delivery delayed: upstream SMTP timeout",
+            "email_id": "order-confirm-78234",
+            "retry": "2/3"
+        },
+        {
+            "ts": "2026-04-16T14:17:59.234Z",
+            "level": "INFO",
+            "logger": "worker",
+            "msg": "Processing notification batch",
+            "count": 12
+        },
+        {
+            "ts": "2026-04-16T14:17:55.891Z",
+            "level": "INFO",
+            "logger": "worker",
+            "msg": "Email sent",
+            "email_id": "order-confirm-78233",
+            "recipient": "customer@example.com"
+        },
+        {
+            "ts": "2026-04-16T14:17:50.003Z",
+            "level": "INFO",
+            "logger": "worker",
+            "msg": "Processing notification batch",
+            "count": 8
+        },
+        {
+            "ts": "2026-04-16T12:09:58.001Z",
+            "level": "ERROR",
+            "logger": "smtp",
+            "msg": "SMTP connection failed: connection refused",
+            "host": "smtp.internal.corp:587"
+        },
+        {
+            "ts": "2026-04-16T12:05:30.223Z",
+            "level": "ERROR",
+            "logger": "smtp",
+            "msg": "SMTP connection failed: connection refused",
+            "host": "smtp.internal.corp:587"
+        },
+        {
+            "ts": "2026-04-16T12:05:28.001Z",
+            "level": "INFO",
+            "logger": "main",
+            "msg": "Starting notification-worker v1.3.7"
+        },
+        {
+            "ts": "2026-04-16T10:45:12.445Z",
+            "level": "ERROR",
+            "logger": "smtp",
+            "msg": "SMTP connection failed: connection refused",
+            "host": "smtp.internal.corp:587"
+        },
+        {
+            "ts": "2026-04-16T08:22:05.891Z",
+            "level": "ERROR",
+            "logger": "smtp",
+            "msg": "SMTP connection failed: connection refused",
+            "host": "smtp.internal.corp:587"
+        }
+    ],
+    "fraud-detector-5d8e3f7b9c-w4x8y": [
+        {
+            "ts": "2026-04-16T14:18:03.123Z",
+            "level": "INFO",
+            "logger": "inference",
+            "msg": "Transaction scored",
+            "txn_id": "txn-9981234",
+            "score": 0.12,
+            "risk": "low",
+            "latency_ms": 18
+        },
+        {
+            "ts": "2026-04-16T14:18:01.891Z",
+            "level": "WARN",
+            "logger": "inference",
+            "msg": "Transaction flagged HIGH risk",
+            "txn_id": "txn-9981233",
+            "score": 0.87,
+            "risk": "high",
+            "latency_ms": 22
+        },
+        {
+            "ts": "2026-04-16T14:17:59.445Z",
+            "level": "INFO",
+            "logger": "inference",
+            "msg": "Transaction scored",
+            "txn_id": "txn-9981232",
+            "score": 0.03,
+            "risk": "low",
+            "latency_ms": 15
+        },
+        {
+            "ts": "2026-04-16T14:17:56.234Z",
+            "level": "INFO",
+            "logger": "model",
+            "msg": "Model warmup complete",
+            "model": "fraud-v2.2.0",
+            "load_time_s": 12.3
+        },
+        {
+            "ts": "2026-04-16T13:53:10.112Z",
+            "level": "ERROR",
+            "logger": "health",
+            "msg": "Liveness probe failed",
+            "details": "GET http://10.244.6.87:8080/healthz: context deadline exceeded",
+            "probe_timeout_s": 5
+        },
+        {
+            "ts": "2026-04-16T13:52:55.001Z",
+            "level": "INFO",
+            "logger": "model",
+            "msg": "Loading model fraud-v2.2.0 (1.8GB)",
+            "estimated_load_time_s": 12
+        },
+        {
+            "ts": "2026-04-16T13:52:55.000Z",
+            "level": "INFO",
+            "logger": "main",
+            "msg": "Starting fraud-detector v2.2.0"
+        }
+    ],
+    "analytics-ingester-8b2f4d7e6c-m9n3p": [],
+    "redis-cache-0": [
+        {
+            "ts": "2026-04-16T14:18:00.001Z",
+            "level": "INFO",
+            "logger": "redis",
+            "msg": "DB 0: 15234 keys (1.2M expires), 890Mi used memory"
+        },
+        {
+            "ts": "2026-04-16T14:00:00.001Z",
+            "level": "INFO",
+            "logger": "redis",
+            "msg": "Background AOF rewrite finished",
+            "duration_s": 2.3
+        },
+        {
+            "ts": "2026-04-16T12:00:00.001Z",
+            "level": "INFO",
+            "logger": "redis",
+            "msg": "Background AOF rewrite finished",
+            "duration_s": 2.1
+        }
+    ]
+}

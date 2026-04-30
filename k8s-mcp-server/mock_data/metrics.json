@@ -1,0 +1,471 @@
+{
+    "order-processor": {
+        "pod": "order-processor-9f2e8d5b7c-q7r4t",
+        "namespace": "prod",
+        "status_note": "Pod is currently in CrashLoopBackOff — metrics are from last running period",
+        "time_range": "2026-04-16T14:12:00Z to 2026-04-16T14:18:21Z",
+        "cpu": {
+            "unit": "millicores",
+            "request": 500,
+            "limit": 2000,
+            "series": [
+                {
+                    "ts": "2026-04-16T14:12:30Z",
+                    "value": 120
+                },
+                {
+                    "ts": "2026-04-16T14:13:00Z",
+                    "value": 340
+                },
+                {
+                    "ts": "2026-04-16T14:13:30Z",
+                    "value": 580
+                },
+                {
+                    "ts": "2026-04-16T14:14:00Z",
+                    "value": 890
+                },
+                {
+                    "ts": "2026-04-16T14:14:30Z",
+                    "value": 1200
+                },
+                {
+                    "ts": "2026-04-16T14:15:00Z",
+                    "value": 1450
+                },
+                {
+                    "ts": "2026-04-16T14:15:30Z",
+                    "value": 1680
+                },
+                {
+                    "ts": "2026-04-16T14:16:00Z",
+                    "value": 1850
+                },
+                {
+                    "ts": "2026-04-16T14:16:30Z",
+                    "value": 1920
+                },
+                {
+                    "ts": "2026-04-16T14:17:00Z",
+                    "value": 1980
+                },
+                {
+                    "ts": "2026-04-16T14:17:30Z",
+                    "value": 1995
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 0,
+                    "note": "OOMKilled"
+                }
+            ]
+        },
+        "memory": {
+            "unit": "MiB",
+            "request_mib": 1024,
+            "limit_mib": 4096,
+            "series": [
+                {
+                    "ts": "2026-04-16T14:12:30Z",
+                    "value": 512
+                },
+                {
+                    "ts": "2026-04-16T14:13:00Z",
+                    "value": 980
+                },
+                {
+                    "ts": "2026-04-16T14:13:30Z",
+                    "value": 1450
+                },
+                {
+                    "ts": "2026-04-16T14:14:00Z",
+                    "value": 2100
+                },
+                {
+                    "ts": "2026-04-16T14:14:30Z",
+                    "value": 2650
+                },
+                {
+                    "ts": "2026-04-16T14:15:00Z",
+                    "value": 3100
+                },
+                {
+                    "ts": "2026-04-16T14:15:30Z",
+                    "value": 3400
+                },
+                {
+                    "ts": "2026-04-16T14:16:00Z",
+                    "value": 3600
+                },
+                {
+                    "ts": "2026-04-16T14:16:30Z",
+                    "value": 3800
+                },
+                {
+                    "ts": "2026-04-16T14:17:00Z",
+                    "value": 3900
+                },
+                {
+                    "ts": "2026-04-16T14:17:30Z",
+                    "value": 3980
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 4096,
+                    "note": "Hit memory limit — OOMKilled"
+                }
+            ]
+        }
+    },
+    "payments-api": {
+        "pod": "payments-api-7d8f9c5b4d-x2p9k",
+        "namespace": "prod",
+        "time_range": "2026-04-16T13:48:00Z to 2026-04-16T14:18:00Z",
+        "cpu": {
+            "unit": "millicores",
+            "request": 500,
+            "limit": 2000,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:48:00Z",
+                    "value": 310
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 325
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 290
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 315
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 340
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 320
+                }
+            ]
+        },
+        "memory": {
+            "unit": "MiB",
+            "request_mib": 1024,
+            "limit_mib": 4096,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:48:00Z",
+                    "value": 1780
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 1790
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 1785
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 1800
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 1810
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 1795
+                }
+            ]
+        }
+    },
+    "notification-worker": {
+        "pod": "notification-worker-3c7a5e9b2d-h6j2l",
+        "namespace": "prod",
+        "time_range": "2026-04-16T13:48:00Z to 2026-04-16T14:18:00Z",
+        "cpu": {
+            "unit": "millicores",
+            "request": 100,
+            "limit": 500,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:48:00Z",
+                    "value": 80
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 95
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 70
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 88
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 92
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 85
+                }
+            ]
+        },
+        "memory": {
+            "unit": "MiB",
+            "request_mib": 256,
+            "limit_mib": 1024,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:48:00Z",
+                    "value": 295
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 310
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 305
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 312
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 308
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 310
+                }
+            ]
+        }
+    },
+    "fraud-detector": {
+        "pod": "fraud-detector-5d8e3f7b9c-w4x8y",
+        "namespace": "prod",
+        "time_range": "2026-04-16T13:52:00Z to 2026-04-16T14:18:00Z",
+        "cpu": {
+            "unit": "millicores",
+            "request": 1000,
+            "limit": 4000,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:52:00Z",
+                    "value": 3200,
+                    "note": "Model loading — high CPU during startup"
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 2800
+                },
+                {
+                    "ts": "2026-04-16T13:56:00Z",
+                    "value": 2200
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 2100
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 2050
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 2150
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 2100
+                }
+            ]
+        },
+        "memory": {
+            "unit": "MiB",
+            "request_mib": 2048,
+            "limit_mib": 8192,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:52:00Z",
+                    "value": 1200,
+                    "note": "Before model load"
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 4800,
+                    "note": "After model load (1.8GB model)"
+                },
+                {
+                    "ts": "2026-04-16T13:56:00Z",
+                    "value": 5100
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 5200
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 5180
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 5220
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 5200
+                }
+            ]
+        }
+    },
+    "inventory-service": {
+        "pod": "inventory-service-6b4d8e7c9f-k3m8n",
+        "namespace": "prod",
+        "time_range": "2026-04-16T13:48:00Z to 2026-04-16T14:18:00Z",
+        "cpu": {
+            "unit": "millicores",
+            "request": 250,
+            "limit": 1000,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:48:00Z",
+                    "value": 170
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 185
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 175
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 190
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 180
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 180
+                }
+            ]
+        },
+        "memory": {
+            "unit": "MiB",
+            "request_mib": 512,
+            "limit_mib": 2048,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:48:00Z",
+                    "value": 410
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 415
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 420
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 418
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 422
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 420
+                }
+            ]
+        }
+    },
+    "analytics-ingester": {
+        "pod": "analytics-ingester-8b2f4d7e6c-m9n3p",
+        "namespace": "prod",
+        "error": "No metrics available — pod has not started (Pending: Unschedulable)"
+    },
+    "redis-cache": {
+        "pod": "redis-cache-0",
+        "namespace": "prod",
+        "time_range": "2026-04-16T13:48:00Z to 2026-04-16T14:18:00Z",
+        "cpu": {
+            "unit": "millicores",
+            "request": 200,
+            "limit": 1000,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:48:00Z",
+                    "value": 145
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 155
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 140
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 160
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 150
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 150
+                }
+            ]
+        },
+        "memory": {
+            "unit": "MiB",
+            "request_mib": 512,
+            "limit_mib": 2048,
+            "series": [
+                {
+                    "ts": "2026-04-16T13:48:00Z",
+                    "value": 880
+                },
+                {
+                    "ts": "2026-04-16T13:54:00Z",
+                    "value": 885
+                },
+                {
+                    "ts": "2026-04-16T14:00:00Z",
+                    "value": 882
+                },
+                {
+                    "ts": "2026-04-16T14:06:00Z",
+                    "value": 888
+                },
+                {
+                    "ts": "2026-04-16T14:12:00Z",
+                    "value": 890
+                },
+                {
+                    "ts": "2026-04-16T14:18:00Z",
+                    "value": 890
+                }
+            ]
+        }
+    }
+}
